@@ -25,7 +25,6 @@ const Login = () => {
 
         client.login(values.username, values.password)
             .then((response) => {
-                console.log(response)
                 sessionStorage.setItem("login", response.data.user.email);
                 sessionStorage.setItem("rol", response.data.user.__t);
                 navigate("/home")

@@ -10,7 +10,6 @@ const Home = () => {
   const logout = () => {
     client.logout()
       .then((response) => {
-        console.log(response)
         sessionStorage.clear()
         navigate("/")
       })

@@ -35,10 +35,8 @@ const Login = () => {
 
     const handleSubmit = async (values) => {
         let client = new useClient();
-        console.log(values)
         client.register(values)
             .then((response) => {
-                console.log(response)
                 navigate('/')
             })
             .catch((error) => {

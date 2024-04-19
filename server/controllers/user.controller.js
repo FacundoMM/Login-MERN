@@ -32,17 +32,17 @@ module.exports = {
             .then(user => {
                 if (!user) {
                     
-                    return res.status(400).json({ error: `1Invalid email or password ${user}` });
+                    return res.status(400).json({ error: `Invalid email or password ${user}` });
                 }
 
                 if (req.body.password === undefined) {
-                    return res.status(400).json({ error: "2Invalid email or password" });
+                    return res.status(400).json({ error: "Invalid email or password" });
                 }
 
                 bcrypt.compare(req.body.password, user.password)
                     .then(passwordIsValid => {
                         if (!passwordIsValid) {
-                            return res.status(401).json({ error: "3Invalid email or password" });
+                            return res.status(401).json({ error: "Invalid email or password" });
                         }
 
                         const userInfo = {
@@ -63,8 +63,8 @@ module.exports = {
                             })
                             .json({ msg: "Login successful!", user: userInfo, newJWT });
                     })
-                    .catch(err => res.status(500).json({ error: "4Internal server error" }));
+                    .catch(err => res.status(500).json({ error: "Internal server error" }));
             })
-            .catch(err => res.status(500).json({ error: "5Internal server error" }));
+            .catch(err => res.status(500).json({ error: "Internal server error" }));
     }
 }
